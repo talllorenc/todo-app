@@ -16,6 +16,10 @@
             color: black;
             font-size: 16px;
             font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            min-height: 100vh;
         }
 
         .todo-item-checkbox {
@@ -59,7 +63,7 @@
 </head>
 
 <body>
-    <div class="flex items-center justify-center min-h-screen w-full">
+    <div class="flex justify-center p-16 w-full">
         <div class="w-[400px] bg-white border border-[#D9D9D9] rounded-lg shadow-sm p-6">
             <h1 class="font-semibold text-[24px] text-center">To Do List</h1>
 
@@ -89,7 +93,7 @@
             <ul id="items-list" class="mt-6 flex flex-col gap-2 max-h-[200px] overflow-y-auto"></ul>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 
