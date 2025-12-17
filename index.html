@@ -64,14 +64,15 @@
             <h1 class="font-semibold text-[24px] text-center">To Do List</h1>
 
             <div class="flex flex-col w-full gap-6 mt-6">
-                <form class="flex items-center gap-4">
-                    <input type="text"
+                <form name="add-item-form" class="flex items-center gap-4">
+                    <input type="text" name="addItemInput"
                         class="min-w-[240px] h-[40px] w-full rounded-lg border border-[#D9D9D9] py-3 pl-4 pr-3"
                         placeholder="New task title">
-                    <button type="submit" class="rounded-lg bg-black text-white p-3 h-[40px] flex items-center justify-center">Add</button>
+                    <button type="submit"
+                        class="rounded-lg bg-black text-white p-3 h-[40px] flex items-center justify-center">Add</button>
                 </form>
 
-                <form class="relative w-full">
+                <form name="find-item-form" class="relative w-full">
                     <input type="text" class="w-full h-[40px] rounded-lg border border-[#D9D9D9] py-3 pl-4 pr-10"
                         placeholder="Search task">
                     <i class="absolute right-3 top-1/2 transform -translate-y-1/2 text-black fas fa-search"></i>
@@ -80,23 +81,15 @@
 
             <div class="flex flex-col mt-6">
                 <div class="flex items-center justify-between">
-                    <p class="font-semibold">Total Tasks: 3</p>
-                    <button class="font-semibold">Delete All</button>
+                    <p class="font-semibold">Total Tasks: <span id="count-total">0</span></p>
+                    <button id="delete-all-btn" class="font-semibold">Delete All</button>
                 </div>
             </div>
 
-            <ul class="mt-6 flex flex-col gap-2">
-                <li class="flex items-center justify-between py-3 px-2 border border-[#D9D9D9] rounded-lg">
-                    <div class="flex items-center gap-3">
-                        <input type="checkbox" class="todo-item-checkbox" />
-                        <p>Task 1</p>
-                    </div>
-
-                    <button class="text-[#757575] w-5 h-5"><i class="fas fa-times text-[20px]"></i></button>
-                </li>
-            </ul>
+            <ul id="items-list" class="mt-6 flex flex-col gap-2 max-h-[200px] overflow-y-auto"></ul>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 
