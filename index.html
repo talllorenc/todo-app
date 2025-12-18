@@ -73,20 +73,20 @@
                         class="min-w-[240px] h-[40px] w-full rounded-lg border border-[#D9D9D9] py-3 pl-4 pr-3"
                         placeholder="New task title">
                     <button type="submit"
-                        class="rounded-lg bg-black text-white p-3 h-[40px] flex items-center justify-center">Add</button>
+                        class="rounded-lg bg-black text-white p-3 h-[40px] flex items-center justify-center hover:opacity-80">Add</button>
                 </form>
 
-                <form name="find-item-form" class="relative w-full">
-                    <input type="text" class="w-full h-[40px] rounded-lg border border-[#D9D9D9] py-3 pl-4 pr-10"
+                <div name="find-item-form" class="relative w-full">
+                    <input id="search-input" type="search" class="w-full h-[40px] rounded-lg border border-[#D9D9D9] py-3 pl-4 pr-10"
                         placeholder="Search task">
                     <i class="absolute right-3 top-1/2 transform -translate-y-1/2 text-black fas fa-search"></i>
-                </form>
+                </div>
             </div>
 
             <div class="flex flex-col mt-6">
                 <div class="flex items-center justify-between">
                     <p class="font-semibold">Total Tasks: <span id="count-total">0</span></p>
-                    <button id="delete-all-btn" class="font-semibold">Delete All</button>
+                    <button id="delete-all-btn" class="font-semibold hover:opacity-80">Delete All</button>
                 </div>
             </div>
 

@@ -1,17 +1,19 @@
 class ToDo {
     selectors = {
         itemsList: "items-list",
+        searchInput: "search-input",
         deleteAllBtn: "delete-all-btn",
         countTotal: "count-total",
     };
 
     constructor() {
         this.addItemForm = document.forms['add-item-form'];
-        this.findItemForm = document.forms['find-item-form'];
+        this.searchInput = document.getElementById(this.selectors.searchInput);
         this.itemsList = document.getElementById(this.selectors.itemsList);
         this.deleteAllBtn = document.getElementById(this.selectors.deleteAllBtn);
         this.countTotal = document.getElementById(this.selectors.countTotal);
 
+        this.searchQuery = "";
         this.items = this.getItemsFromStorage();
 
         this.renderItems();
@@ -95,9 +97,13 @@ class ToDo {
      * Метод для рендера всех элементов
      */
     renderItems = () => {
+        const filteredItems = this.items.filter(item =>
+            item.title.toLowerCase().includes(this.searchQuery)
+        );
+
         this.countTotal.textContent = this.items.length;
 
-        this.itemsList.innerHTML = this.items.map((elem) => `
+        this.itemsList.innerHTML = filteredItems.map((elem) => `
             <li id=${elem.id} class="flex items-center justify-between py-3 px-2 border border-[#D9D9D9] rounded-lg">
                 <div class="flex items-center gap-3">
                     <input data-action="complete" type="checkbox" class="todo-item-checkbox" ${elem.completed ? 'checked' : ''}/>
@@ -125,6 +131,15 @@ class ToDo {
             this.setItemsToStorage();
             this.renderItems();
         }
+    }
+
+    /**
+     * 
+     * Обработка строки поиска
+     */
+    onSearchInputChange = (event) => {
+        this.searchQuery = event.target.value.toLowerCase().trim();
+        this.renderItems();
     }
 
     /**
@@ -162,6 +177,7 @@ class ToDo {
         this.addItemForm.addEventListener('submit', this.onAddItemFormSubmit);
         this.deleteAllBtn.addEventListener('click', this.onDeleteAllItems);
         this.itemsList.addEventListener('click', this.onItemsListClick);
+        this.searchInput.addEventListener('input', this.onSearchInputChange)
     }
 }
 
